@@ -1,0 +1,106 @@
+
+
+<div class="navbar navbar-expand-lg fixed-top navbar-light bg-white" style="border-style: hidden;">
+    <div class="container">
+        <span class="navbar-brand ml-3" href="/es">
+            <!-- <img src="https://app-sorteos.com/img/logo2.png" alt="" width="160"> -->
+            ..:: <strong>Sorteo</strong> ::..
+        </span>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto align-items-center">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="main" style="height: auto !important;">
+    <div style="background-color: #fff;">
+        <div class="jumbotron gradient bg-whiate rounded-0 text-white text-center slope">
+            <div class="container">
+                <h1><strong>Sorteo de Cupos</strong></h1>
+                <p class="lead mt-3">Realiza sorteos rapidamente, a mas cupos mas posibilidad de ganar.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <label for="inputCity">Nombre</label>
+                    <input type="text" class="form-control" [(ngModel)]="name" name="name">
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <label for="inputState">Cupos</label>
+                    <input type="number" class="form-control" [(ngModel)]="cupones" id="txtnumber">
+                </div>
+                <div class="col-lg-2 col-md-12 mt-4">
+                    <button (click)="agregar()" id="btnAdd" class="btn btn-md btn-success mt-1">Agregar</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-10">
+                    <ul class="list-group">
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            *ngFor="let item of clientes">
+                            <h4>{{ item.name }}</h4>
+                          <h3><span class="badge badge-success">{{ item.cupones }}</span></h3>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+
+
+            <div class="row  mx-3 mt-4" *ngIf="!sortearLoading">
+                <div class="col-lg-12 text-center">
+                    <button class="btn btn-danger btn-md mx-auto mt-1" (click)="sortear()">Sortear!</button>
+                </div>
+            </div>
+
+            <!-- <div class="row  mx-3 mt-4" *ngIf="sortearLoading">
+                <div class="col-lg-12 text-center">
+                    <label for="">Realizando sorteo</label>
+                </div>
+            </div> -->
+
+            <div class="row mx-3 mt-5">
+                <div class="col-lg-12">
+                    <!-- <div class="bs-component">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax ="100" [style.width]="progress + '%'">
+                                {{progress}}%
+                            </div>
+                        </div>
+                    </div> -->
+                    <div>
+                        <div class="mb-2">
+                          <progressbar class="progress-striped active"  [value]="progress" [max]="100" type="success"> {{progress}} % </progressbar>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row  mx-3" *ngIf="ganador">
+                <div class="col-lg-12 mt-5">
+                    <h1 class="text-center"> {{ ganadornombre }}</h1>
+                </div>
+            </div>
+            <div class="row  mx-3 mt-4" *ngIf="ganador">
+                <div class="col-lg-12 text-center">
+                    <button class="btn btn-danger btn-md mx-auto mt-1" (click)="sortear2()">Sortear nuevamente!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <br>
+    <br>
+</div>
